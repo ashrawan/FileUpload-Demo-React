@@ -18,26 +18,26 @@ class App extends Component {
     }
   }
 
-  checkServerStatus(){
+  checkServerStatus() {
     let self = this;
     axios.get("serverStatus")
-    .then(function (response) {
-        if(response.data === true){
+      .then(function (response) {
+        if (response.data === true) {
           self.setState({ serverStarted: true })
         }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  componentDidMount(){
-   this.checkServerStatus();
+  componentDidMount() {
+    this.checkServerStatus();
   }
 
 
   onFileUpload = (fileName) => {
-    console.log("fileName ", fileName)
+    // console.log("fileName ", fileName)
     this.setState({ image: fileName })
   }
 
@@ -46,26 +46,28 @@ class App extends Component {
       <div>
 
         <Navigation />
-        
+
         {!this.state.serverStarted ?
-        <div className="fa-2x text-center">
-          <FontAwesomeIcon icon="spinner" pulse />
-          <span> Waiting for server to Come Online ...</span>
-        </div> : ""}
+          <div className="fa-2x text-center">
+            <FontAwesomeIcon icon="spinner" pulse />
+            <span> Waiting for server to Come Online ...</span>
+          </div> : ""}
 
         <h3 className="text-center mt-4">Files are uploaded only temporarily</h3>
         <p className="text-center text-danger mt-2">Select or Upload File</p>
         <div className="container mx-auto mt-3">
           <FileUploadTest selectedFile={(result) => {
-            console.log(result);
             this.onFileUpload(result.file.fileName);
           }} />
 
           {this.state.image ?
-            <div className="alert alert-primary mt-2" role="alert">
-              <span className="font-weight-bold text-info">
-                File Successfully Selected: {this.state.image}
-              </span>
+            <div>
+              <div className="alert alert-primary mt-2" role="alert">
+                <span className="font-weight-bold text-info">
+                  File Successfully Selected: {this.state.image}
+                </span>
+              </div> 
+              <div className="text-center"> <img className="image-preview" src={"https://sbfileupload.herokuapp.com/downloadFile/" + this.state.image} /></div>
             </div> : ""}
 
         </div>

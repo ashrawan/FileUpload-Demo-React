@@ -60,11 +60,11 @@ class FileUploadTest extends Component {
 
         axios.get(url)
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 self.setState({ jsonServerFiles: response.data })
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
     }
 
@@ -111,7 +111,7 @@ class FileUploadTest extends Component {
             let self = this;
             imageCompressor.compress(this.state.files[0], options)
                 .then((result) => {
-                    console.log("result ", result);
+                    // console.log("result ", result);
                     // Handle the compressed image file.
                     self.setState({ reduceFile: result }, self.upload)
                     // self.props.selectedFile({
@@ -129,7 +129,7 @@ class FileUploadTest extends Component {
     }
 
     upload = () => {
-        console.log(this.state.reduceFile);
+        // console.log(this.state.reduceFile);
         let form = new FormData();
         form.append("file", this.state.reduceFile, this.state.reduceFile.name);
 
@@ -165,14 +165,14 @@ class FileUploadTest extends Component {
 
     onFileSelect = () => {
         if (!!this.state.serverSelectedFile || this.state.setFileEmpty) {
-            console.log("passed Props ", this.state.serverSelectedFile);
+            // console.log("passed Props ", this.state.serverSelectedFile);
             this.props.selectedFile({
                 file: this.state.serverSelectedFile
             })
             this.modalOpen();
         }
         else if (this.state.selectedFileResponse) {
-            console.log("passed Props ", this.state.selectedFileResponse);
+            // console.log("passed Props ", this.state.selectedFileResponse);
             this.props.selectedFile({
                 file: this.state.selectedFileResponse
             })
@@ -214,7 +214,7 @@ class FileUploadTest extends Component {
     }
     onPageChange = (e) => {
         const pageClicked = e.target.id;
-        console.log("page Clicked ", pageClicked)
+        // console.log("page Clicked ", pageClicked)
         this.setState({ currentPage: pageClicked });
 
     }
