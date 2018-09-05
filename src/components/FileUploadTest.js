@@ -70,12 +70,14 @@ class FileUploadTest extends Component {
 
     // File Drop from dropzone
     onDrop = (files) => {
-        this.setState({
-            files: files,
-            fileSelected: true,
-            uploadProgress: 0,
-            serverSelectedFile: ''
-        })
+        if (files[0]) {
+            this.setState({
+                files: files,
+                fileSelected: true,
+                uploadProgress: 0,
+                serverSelectedFile: ''
+            })
+        }
     }
 
     modalOpen = () => {
@@ -280,7 +282,7 @@ class FileUploadTest extends Component {
                                 {this.state.serverSelectedFile.fileName === file.fileName ? <FontAwesomeIcon icon={faCheckCircle} /> : ''}
                             </div>
                         </div>
-                            <a href={this.state.fileShowUrl + file.fileName}>{file.fileName}</a>
+                        <a href={this.state.fileShowUrl + file.fileName}>{file.fileName}</a>
 
                     </div>)
             });
@@ -315,7 +317,7 @@ class FileUploadTest extends Component {
                                 <Button color={this.state.selectClicked ? "info" : ""} onClick={this.onSelectFileClicked}>Select File</Button>
 
                                 <span className="font-weight-light danger pl-3">
-                                   
+
                                 </span>
 
                                 {this.state.selectClicked ?
@@ -328,7 +330,7 @@ class FileUploadTest extends Component {
 
 
                                 {this.state.uploadClicked ?
-                                    <div>
+                                    <div> <p className="text-center text-danger">* Only Image is Supported </p>
                                         <Dropzone disablePreview={false} multiple={this.props.multipleFiles}
                                             accept={this.props.accept} onDrop={this.onDrop} className="file-upload mt-3 mb-2 p-2">
                                             <div className="p-2 mb-1 bg-info text-white cursor-pointer"> Drop a file, or click to add. </div>
@@ -396,7 +398,7 @@ class FileUploadTest extends Component {
 FileUploadTest.defaultProps = {
     buttonLabel: 'Upload File',
     multipleFiles: false,
-    accept: '',
+    accept: 'image/*',
 }
 
 export default FileUploadTest;

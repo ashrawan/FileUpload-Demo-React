@@ -22,7 +22,6 @@ class App extends Component {
     let self = this;
     axios.get("serverStatus")
     .then(function (response) {
-        console.log(response);
         if(response.data === true){
           self.setState({ serverStarted: true })
         }
@@ -58,6 +57,7 @@ class App extends Component {
         <p className="text-center text-danger mt-2">Select or Upload File</p>
         <div className="container mx-auto mt-3">
           <FileUploadTest selectedFile={(result) => {
+            console.log(result);
             this.onFileUpload(result.file.fileName);
           }} />
 
