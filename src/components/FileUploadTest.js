@@ -311,7 +311,6 @@ class FileUploadTest extends Component {
                         <Modal isOpen={this.state.modal} size="lg" toggle={this.modalOpen} className={this.props.className} keyboard={false} onClosed={this.onModalClosed}>
                             <ModalHeader toggle={this.modalOpen}>Select File</ModalHeader>
                             <ModalBody>
-                            <p className="text-dark text-center mb-1 p-0">Initial data Loading will take time, due to server restart</p>
                                 <Button color={this.state.uploadClicked ? "info" : ""} className="mr-3" onClick={this.onBtnClicked}>Upload File</Button>
                                 <Button color={this.state.selectClicked ? "info" : ""} onClick={this.onSelectFileClicked}>Select File</Button>
 

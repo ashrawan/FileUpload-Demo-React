@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 ReactDOM.render(<BrowserRouter>
-<Switch>
+<Switch> 
     <Route path="/" component={App}/>
 </Switch>
 </BrowserRouter>, document.getElementById('root'));

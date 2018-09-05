@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import FileUploadTest from './FileUploadTest';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import FileUploadTest from './components/FileUploadTest';
+import Navigation from './components/Navigation';
 
 axios.defaults.baseURL = 'https://sbfileupload.herokuapp.com/';
 // axios.defaults.baseURL = 'http://127.0.0.1:8080/';
@@ -11,8 +13,27 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: ""
+      image: "",
+      serverStarted: false
     }
+  }
+
+  checkServerStatus(){
+    let self = this;
+    axios.get("serverStatus")
+    .then(function (response) {
+        console.log(response);
+        if(response.data === true){
+          self.setState({ serverStarted: true })
+        }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  componentDidMount(){
+   this.checkServerStatus();
   }
 
 
@@ -24,7 +45,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h3 className="text-center mt-1">Files are uploaded only temporarily</h3>
+
+        <Navigation />
+        
+        {!this.state.serverStarted ?
+        <div className="fa-2x text-center">
+          <FontAwesomeIcon icon="spinner" pulse />
+          <span> Waiting for server to come Online ...</span>
+        </div> : ""}
+
+        <h3 className="text-center mt-4">Files are uploaded only temporarily</h3>
         <p className="text-center text-danger mt-2">Select or Upload File</p>
         <div className="container mx-auto mt-3">
           <FileUploadTest selectedFile={(result) => {
@@ -32,12 +62,12 @@ class App extends Component {
           }} />
 
           {this.state.image ?
-          <div className="alert alert-primary mt-2" role="alert">
-          <span className="font-weight-bold text-info">
-            File Successfully Selected: {this.state.image}
-          </span>
-          </div>: ""}
-          
+            <div className="alert alert-primary mt-2" role="alert">
+              <span className="font-weight-bold text-info">
+                File Successfully Selected: {this.state.image}
+              </span>
+            </div> : ""}
+
         </div>
       </div>
     );
