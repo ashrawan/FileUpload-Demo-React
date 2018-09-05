@@ -98,7 +98,7 @@ class FileUploadTest extends Component {
     }
 
     fileSelected = () => {
-
+        this.setState({fileSelected: false});
         if (!!this.state.serverSelectedFile || this.state.setFileEmpty) {
             this.onFileSelect();
         }
