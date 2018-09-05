@@ -67,7 +67,7 @@ class App extends Component {
                   File Successfully Selected: {this.state.image}
                 </span>
               </div> 
-              <div className="text-center"> <img className="image-preview" src={"https://sbfileupload.herokuapp.com/downloadFile/" + this.state.image} /></div>
+              <div className="text-center image-preview"> <img className="col-md-12" src={"https://sbfileupload.herokuapp.com/downloadFile/" + this.state.image} /></div>
             </div> : ""}
 
         </div>

@@ -396,7 +396,7 @@ class FileUploadTest extends Component {
 }
 
 FileUploadTest.defaultProps = {
-    buttonLabel: 'Upload File',
+    buttonLabel: 'Upload / Select File',
     multipleFiles: false,
     accept: 'image/*',
 }

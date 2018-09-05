@@ -37,7 +37,7 @@ body {
   background-color: rgb(23, 70, 48);
   color:  rgb(32, 211, 32);
 }
-
-.image-preview{
-  max-height: 50vh;
+.image-preview img {
+  width: auto;
+  margin-bottom: 5rem;
 }
