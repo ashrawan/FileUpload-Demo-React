@@ -31,7 +31,7 @@ export default class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="https://github.com/ashrawan/reactFileUpload">GitHub</NavLink>
+                <NavLink href="https://github.com/ashrawan/reactFileUpload" target="_blank">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

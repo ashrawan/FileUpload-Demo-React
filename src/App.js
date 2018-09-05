@@ -51,7 +51,7 @@ class App extends Component {
         {!this.state.serverStarted ?
         <div className="fa-2x text-center">
           <FontAwesomeIcon icon="spinner" pulse />
-          <span> Waiting for server to come Online ...</span>
+          <span> Waiting for server to Come Online ...</span>
         </div> : ""}
 
         <h3 className="text-center mt-4">Files are uploaded only temporarily</h3>
