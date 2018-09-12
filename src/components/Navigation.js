@@ -26,7 +26,7 @@ export default class Navigation extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand className="font-weight-bold text-info" href="/reactFileUpload">FileUpload</NavbarBrand>
+          <NavbarBrand className="font-weight-bold text-info" href="/FileUpload-Demo-React">FileUpload</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
